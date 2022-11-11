@@ -37,15 +37,15 @@ import Foundation
 
 struct MusicItem: Decodable {
     let artworkUrl100: String
+    let name: String
     let artistName: String
-    let copyright: String?
 }
 
 
 struct MusicItemViewModel: IdentifiableHashable {
     let id = UUID()
     let musicItem: MusicItem
-    var mainTitle: String { musicItem.artistName }
-    var subTitle: String { musicItem.copyright ?? "No sub" }
+    var title: String { musicItem.name }
+    var artist: String { musicItem.artistName}
     var artworkLarge: URL? { URL(string: musicItem.artworkUrl100) }
 }

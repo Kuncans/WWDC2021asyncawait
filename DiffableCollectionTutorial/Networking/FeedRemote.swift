@@ -16,14 +16,14 @@ final class FeedRemote: ObservableObject {
     @Published private(set) var musicItems: [MusicItemViewModel] = []
 
     var request: URLRequest = {
-        let urlString = "https://rss.itunes.apple.com/api/v1/us/apple-music/coming-soon/all/50/explicit.json"
+        let urlString = "https://rss.applemarketingtools.com/api/v2/gb/music/most-played/50/albums.json"
         let url = URL(string: urlString)!
         return URLRequest(url: url)
     }()
 
     @available(iOS 15, *)
     func fetchMusicItems() {
-        async {
+        Task {
             do {
                 let container = try await client.fetch(type: Container<MusicItem>.self, with: request)
                 DispatchQueue.main.async {

@@ -14,9 +14,9 @@ final class MusicItemCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .label
-        label.font = .preferredFont(forTextStyle: .title1)
+        label.font = .preferredFont(forTextStyle: .body)
         label.adjustsFontForContentSizeCategory = true
-        label.numberOfLines = 0
+        label.numberOfLines = 3
         return label
     }()
 
@@ -65,7 +65,7 @@ final class MusicItemCell: UICollectionViewCell {
 extension MusicItemCell: ViewModelInjectable {
 
     func configureWithViewModel(_ model: MusicItemViewModel) {
-        titleLabel.text = model.subTitle
+        titleLabel.text = model.title
         imageView.sd_setImage(with: model.artworkLarge)
     }
 }
